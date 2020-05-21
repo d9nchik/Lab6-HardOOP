@@ -10,15 +10,15 @@ public class Sphere extends FigureInSpace {
 
     @Override
     public double getFullArea() {
-        return 4 * Math.PI * Math.pow(getRadiusBig(), 2);
+        return 4 * Math.PI * Math.pow(getARadius(), 2);
     }
 
     @Override
     public double getVolume() {
-        return 4 * Math.PI / 3 * Math.pow(getRadiusBig(), 3);
+        return 4 * Math.PI / 3 * Math.pow(getARadius(), 3);
     }
 
     public double getRadius(){
-        return getRadiusBig();
+        return getARadius();
     }
 }
