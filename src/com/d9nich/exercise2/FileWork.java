@@ -3,6 +3,9 @@ package com.d9nich.exercise2;
 import java.io.*;
 
 public class FileWork {
+    public final static File PARENT_FILE = new File("parent.dat");
+    public final static File TEACHER_FILE = new File("events.dat");
+
     @SuppressWarnings("unchecked")
     public static <E extends Serializable> E readFromFile(File file) {
         try (ObjectInputStream input = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
@@ -25,5 +28,8 @@ public class FileWork {
         } catch (IOException ex) {
             System.out.println("Problem with stream!");
         }
+    }
+
+    private FileWork() {
     }
 }
