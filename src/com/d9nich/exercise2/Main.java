@@ -1,8 +1,11 @@
 package com.d9nich.exercise2;
 
-import java.io.*;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import static com.d9nich.exercise2.FileWork.printInFile;
+import static com.d9nich.exercise2.FileWork.readFromFile;
 
 public class Main {
     private final static boolean IS_COMPANY_INTERFACE = false;
@@ -42,15 +45,6 @@ public class Main {
         }
     }
 
-    private static <E extends Serializable> void printInFile(E elements, File file) {
-        try (ObjectOutputStream output = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
-            output.writeObject(elements);
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found");
-        } catch (IOException ex) {
-            System.out.println("Problem with stream!");
-        }
-    }
 
     private static <E> void myArrayPrint(E[] array) {
         int counter = 1;
@@ -58,19 +52,6 @@ public class Main {
             System.out.println(counter++ + ") " + element);
     }
 
-    @SuppressWarnings("unchecked")
-    private static <E extends Serializable> E readFromFile(File file) {
-        try (ObjectInputStream input = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-            return (E) input.readObject();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found");
-        } catch (IOException ex) {
-            System.out.println("Problem with stream");
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Problem with class reading");
-        }
-        return null;
-    }
 
     private static void addParent(HashMap<String, boolean[]> map, String value, Scanner input, int maximumBooleanSize) {
         System.out.print("Enter number of events, which you would like to visit: ");
