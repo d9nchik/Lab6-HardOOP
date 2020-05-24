@@ -31,4 +31,9 @@ public class Tor extends FigureInSpace {
     public double getVolume() {
         return 2 * Math.pow(Math.PI, 2) * getBigRadius() * Math.pow(getSmallRadius(), 2);
     }
+
+    @Override
+    public String toString() {
+        return "Tor{} " + super.toString();
+    }
 }

@@ -18,7 +18,12 @@ public class Sphere extends FigureInSpace {
         return 4 * Math.PI / 3 * Math.pow(getARadius(), 3);
     }
 
-    public double getRadius(){
+    public double getRadius() {
         return getARadius();
+    }
+
+    @Override
+    public String toString() {
+        return "Sphere{} " + super.toString();
     }
 }

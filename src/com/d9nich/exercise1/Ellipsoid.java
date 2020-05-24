@@ -41,4 +41,9 @@ public class Ellipsoid extends FigureInSpace {
     public double getCRadius() {
         return super.getCRadius();
     }
+
+    @Override
+    public String toString() {
+        return "Ellipsoid{} " + super.toString();
+    }
 }

@@ -38,4 +38,9 @@ public abstract class FigureInSpace {
     public abstract double getFullArea();
 
     public abstract double getVolume();
+
+    @Override
+    public String toString() {
+        return "Area: " + getFullArea() + "; Volume: " + getVolume();
+    }
 }
