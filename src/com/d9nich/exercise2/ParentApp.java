@@ -7,23 +7,39 @@ import static com.d9nich.exercise2.FileWork.*;
 
 public class ParentApp {
     public static void main(String[] args) {
+        JoyEvent[] events = readFromFile(COMPANY_FILE);
+        assert events != null;
+        myArrayPrint(events);
+
         HashMap<String, boolean[]> parentList = readFromFile(PARENT_FILE);
         if (parentList == null)
             parentList = new HashMap<>();
-        JoyEvent[] events = readFromFile(TEACHER_FILE);
-        assert events != null;
-        myArrayPrint(events);
+        int[] countOfParentsInEvent = readFromFile(TEACHER_FILE);
+        if (countOfParentsInEvent == null)
+            countOfParentsInEvent = new int[events.length];
+
         Scanner input = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String patternName = input.nextLine();
+        boolean[] temp;
         if (parentList.containsKey(patternName)) {
+            temp = parentList.get(patternName);
+            for (int i = 0; i < temp.length; i++)
+                if (temp[i])
+                    countOfParentsInEvent[i]--;
             showActionForExistentParent(parentList, events, input, patternName);
         } else
             addParent(parentList, patternName, input, events.length);
+        temp = parentList.get(patternName);
+        for (int i = 0; i < temp.length; i++)
+            if (temp[i])
+                countOfParentsInEvent[i]++;
         printInFile(parentList, PARENT_FILE);
+        printInFile(countOfParentsInEvent, TEACHER_FILE);
     }
 
-    private static void showActionForExistentParent(HashMap<String, boolean[]> parentList, JoyEvent[] events, Scanner input, String patternName) {
+    private static void showActionForExistentParent(HashMap<String, boolean[]> parentList, JoyEvent[] events,
+                                                    Scanner input, String patternName) {
         System.out.println("You have already added your name!");
         System.out.println("Your events choice:");
         boolean[] choices = parentList.get(patternName);
